@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FocusTube settings</title>
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">FocusTube / setup</p>
+      <h1>Connect your filter.</h1>
+      <p class="intro">Your TypeSafe key stays in Cloudflare. FocusTube sends only visible video titles, channels, and page context to your Worker.</p>
+
+      <form id="form">
+        <label for="workerUrl">Cloudflare Worker URL</label>
+        <div class="input-row">
+          <input id="workerUrl" name="workerUrl" type="url" placeholder="https://focustube.your-name.workers.dev" required>
+        </div>
+        <label for="workerToken">Extension token</label>
+        <div class="input-row">
+          <input id="workerToken" name="workerToken" type="password" autocomplete="off" placeholder="Same value as FOCUSTUBE_TOKEN" required>
+          <button type="submit">Save & test</button>
+        </div>
+        <p id="status" role="status" aria-live="polite">Not connected</p>
+      </form>
+
+      <section>
+        <h2>What leaves your browser</h2>
+        <ul>
+          <li>Video title</li>
+          <li>Channel name</li>
+          <li>Surface: home, search, or recommendations</li>
+        </ul>
+        <p>Cookies, account identity, watch history, comments, and transcripts never leave your browser.</p>
+      </section>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

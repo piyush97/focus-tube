@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FocusTube</title>
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="ui.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="masthead">
+        <span class="mark" aria-hidden="true">F</span>
+        <div>
+          <p class="eyebrow">Study signal</p>
+          <h1>FocusTube</h1>
+        </div>
+        <span id="liveLabel" class="live">Live</span>
+      </header>
+
+      <section class="ledger" aria-label="This session">
+        <div><strong id="kept">0</strong><span>lessons kept</span></div>
+        <div><strong id="hidden">0</strong><span>distractions hidden</span></div>
+      </section>
+
+      <section class="controls">
+        <label class="switch-row" for="enabled">
+          <span><strong>Focus filter</strong><small>Only reveal clear learning content</small></span>
+          <input id="enabled" type="checkbox" role="switch">
+        </label>
+
+        <label class="range-row" for="threshold">
+          <span><strong>Strictness</strong><output id="thresholdValue">82%</output></span>
+          <input id="threshold" type="range" min="65" max="95" step="1">
+          <small>Higher means fewer borderline videos.</small>
+        </label>
+      </section>
+
+      <footer>
+        <span id="connection" class="connection">Checking setup…</span>
+        <button id="settings" type="button">Settings →</button>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
