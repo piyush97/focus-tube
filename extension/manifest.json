@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "FocusTube",
+  "version": "0.1.1",
+  "description": "Turn YouTube into a focused coding and education hub.",
+  "permissions": ["storage"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "host_permissions": [
+    "https://*.workers.dev/*",
+    "http://127.0.0.1:8787/*",
+    "http://localhost:8787/*"
+  ],
+  "action": {
+    "default_title": "FocusTube",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "focustube@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

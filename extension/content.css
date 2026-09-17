@@ -1,0 +1,57 @@
+:root {
+  --ft-signal: #b6f36b;
+  --ft-ink: #172019;
+}
+
+.focustube-pending,
+.focustube-hidden,
+.focustube-shorts-hidden {
+  display: none !important;
+}
+
+/* Shorts stay blocked even when recommendation filtering is paused. */
+ytd-reel-item-renderer,
+ytd-reel-shelf-renderer,
+ytd-rich-shelf-renderer[is-shorts] {
+  display: none !important;
+}
+
+.focustube-visible {
+  animation: focustube-reveal 160ms ease-out both;
+}
+
+#focustube-status {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid color-mix(in srgb, var(--ft-ink) 22%, transparent);
+  border-radius: 8px;
+  background: #fffdf7;
+  color: var(--ft-ink);
+  box-shadow: 0 8px 24px rgb(23 32 25 / 14%);
+  font: 600 12px/1.2 Arial, sans-serif;
+  letter-spacing: .01em;
+  pointer-events: none;
+}
+
+#focustube-status::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ft-signal);
+  content: "";
+}
+
+@keyframes focustube-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focustube-visible { animation: none; }
+}
