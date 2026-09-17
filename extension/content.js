@@ -76,8 +76,10 @@ function reveal(card, probability) {
   publishStats();
 }
 
+let statsTimer;
 function publishStats() {
-  api.storage.local.set({ sessionStats: stats });
+  clearTimeout(statsTimer);
+  statsTimer = setTimeout(() => api.storage.local.set({ sessionStats: stats }), 500);
   const badge = document.querySelector("#focustube-status");
   if (badge) badge.textContent = `${stats.kept} lessons kept · ${stats.hidden} distractions hidden`;
 }
@@ -186,7 +188,11 @@ async function start() {
   if (document.body) scan();
   else document.addEventListener("DOMContentLoaded", () => scan(), { once: true });
 
-  new MutationObserver(() => scan()).observe(document.documentElement, { childList: true, subtree: true });
+  let scanTimer;
+  new MutationObserver(() => {
+    clearTimeout(scanTimer);
+    scanTimer = setTimeout(() => scan(), 300);
+  }).observe(document.documentElement, { childList: true, subtree: true });
 
   document.addEventListener("yt-navigate-finish", () => {
     restoreAll();
